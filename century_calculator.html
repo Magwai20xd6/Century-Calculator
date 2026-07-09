@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <p>When will I finish?</p>
+        <form id="find_end_date">
+            <label for="start_date">Start Date:</label>
+            <span id="start_date_fed_error"></span>
+            <input type="date" name="start_date_fed" id="start_date_fed" value=""></input>
+            <label for="number_of_days">Number of Days:</label>
+            <span id="number_of_days_error"></span>
+            <input type="number" name="number_of_days" id="number_of_days" value="100"></input>
+            <button id="calculate_end_date" type="submit">Calculate</button>
+        </form>
+        
+        <span id="end_date"></span>
+
+        <p>What day am I on?</p>
+        <form id="find_day_number">
+            <label for="start_date">Start Date:</label>
+            <input type="date" name="start_date_fdn" id="start_date_fdn" value=""></input>
+            <label for="current_date">Current Date:</label>
+            <input type="date" name="current_date" id="current_date" value=""></input>
+            <button id="calculate_day_number" type="submit">Calculate</button>
+        </form>
+        
+        <span id="day_number"></span>
+    <script src="century_calculator.js"></script>
+    
+    </body>
+</html>
