@@ -1,29 +1,38 @@
 <html>
-    <body>
+    <head>
+        <title>Century Calculator</title>
+    </head>
+    <body onload="popCurrentDate()">
         <p>When will I finish?</p>
-        <form id="find_end_date">
+        <form id="find_end_date" oninput="validateEndDateForm();">
             <label for="start_date">Start Date:</label>
-            <span id="start_date_fed_error"></span>
-            <input type="date" name="start_date_fed" id="start_date_fed" value=""></input>
+            <span id="start_date_fed_error" style="color: red;"></span>
+            <input type="date" name="start_date_fed" id="start_date_fed" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_FED_Error()" value=""></input>
+            
             <label for="number_of_days">Number of Days:</label>
-            <span id="number_of_days_error"></span>
-            <input type="number" name="number_of_days" id="number_of_days" value="100"></input>
-            <button id="calculate_end_date" type="submit">Calculate</button>
+            <span id="number_of_days_error" style="color: red;"></span>
+            <input type="number" name="number_of_days" id="number_of_days" required pattern="\d+" oninput="toggle_SD_ND_Error()" value="100"></input>
+            
+            <button id="calculate_end_date" disabled type="submit">Calculate</button>
         </form>
         
         <span id="end_date"></span>
 
         <p>What day am I on?</p>
-        <form id="find_day_number">
+        <form id="find_day_number" oninput="validateDayNumberForm();">
             <label for="start_date">Start Date:</label>
-            <input type="date" name="start_date_fdn" id="start_date_fdn" value=""></input>
+            <span id="start_date_fdn_error" style="color: red;"></span>
+            <input type="date" name="start_date_fdn" id="start_date_fdn" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_FDN_Error()" value=""></input>
+            
             <label for="current_date">Current Date:</label>
-            <input type="date" name="current_date" id="current_date" value=""></input>
-            <button id="calculate_day_number" type="submit">Calculate</button>
+            <span id="current_date_error" style="color: red;"></span>
+            <input type="date" name="current_date" id="current_date" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_CD_Error()" value=""></input>
+            
+            <button id="calculate_day_number" disabled type="submit">Calculate</button>
         </form>
         
         <span id="day_number"></span>
-    <script src="century_calculator.js"></script>
     
+    <script src="century_calculator.js"></script>
     </body>
 </html>

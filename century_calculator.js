@@ -1,132 +1,94 @@
+// Add event listeners to the forms
+document.getElementById('find_end_date').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting
 
-// End date variables
-var start_date_fed = '',
-    number_of_days = 0,
-    // Day number variables
-    start_date_fdn = '',
-    current_date = '',
-    // day_number = 0;
+    findEndDate();
+});
+document.getElementById('find_day_number').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting
 
-// Create an error message node for invalid date format for the start date on the 
-const error_text_sd_fed_node = document.createTextNode("Invalid date format. Please use YYYY-MM-DD.");
-    error_text_node.style.color = "red";
-    error_text_node.id = "start_date_fed_error"; // Set an ID for the error message
-
-const error_text_nod_node = document.createTextNode("Invalid number of days. Please enter a valid number.");
-    error_text_node.style.color = "red";
-    error_text_node.id = "number_of_days_error"; // Set an ID for the error message
-
-const error_text_sd_fdn_node = document.createTextNode("Invalid date format. Please use YYYY-MM-DD.");
-    error_text_node.style.color = "red";
-    error_text_node.id = "start_date_fdn_error"; // Set an ID for the error message
-
-const error_text_cd_node = document.createTextNode("Invalid date format. Please use YYYY-MM-DD.");
-    error_text_node.style.color = "red";
-    error_text_node.id = "current_date_error"; // Set an ID for the error message
-
-function validateFEDStartDate(){
-    var sd_fed = document.getElementById('start_date_fed').value; // Get the start date from the input field
+    findWhatDayImOn();
+});
 
 
-    // Check if the start date is a valid date format, i.e. YYYY-MM-DD
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(sd_fed)) {
-        // Display error message above the input field
-        document.getElementById('start_date_fed').parentNode.insertBefore(
-            error_text_node,
-            document.getElementById('start_date_fed')
-        );
-    } else {
-        // Remove error message if it exists
-        var existingError = document.getElementById('start_date_fed_error');
-        if (existingError) {
-            existingError.remove();
-        }
-        // Conver the start date string to a Date object
-        start_date_fed = sd_fed;
-    }  
+function popCurrentDate(){
+    const current_date_node = document.getElementById("current_date");
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+    current_date_node.value = formattedDate;
 }
 
-function validateFEDNumberOfDays(){
-    var n_o_d = document.getElementById('number_of_days').value; // Get the current date from the input field
-    
-    // Check if the number of days is a valid number
-    if (isNaN(n_o_d) || n_o_d < 0) {
-        // Display error message above the input field
-        document.getElementById('number_of_days').parentNode.insertBefore(
-            error_text_nod_node,
-            document.getElementById('number_of_days')
-        );
-    } else {
-        // Remove error message if it exists
-        var existingError = document.getElementById('number_of_days_error');
-        if (existingError) {
-            existingError.remove();
-        }
-        // Convert the number of days string to an integer
-        number_of_days = parseInt(n_o_d);
-    }    
-}
 
-function validateFDNStartDate(){
-    var sd_fdn = document.getElementById('start_date_fdn').value; // Get the start date from the input field
-    
-    // Check if the start date is a valid date format, i.e. YYYY-MM-DD
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(sd_fdn)) {
-        // Display error message above the input field
-        document.getElementById('start_date_fdn').parentNode.insertBefore(
-            error_text_node,
-            document.getElementById('start_date_fdn')
-        );
+function validateEndDateForm(){
+    const start_date_fed_node = document.getElementById("start_date_fed");
+    const number_of_days_node = document.getElementById("number_of_days");
+    const calculate_end_date_button = document.getElementById("calculate_end_date");
+
+    if (start_date_fed_node.validity.valid && number_of_days_node.validity.valid) {
+        calculate_end_date_button.disabled = false;
     } else {
-        // Remove error message if it exists
-        var existingError = document.getElementById('start_date_fdn_error');
-        if (existingError) {
-            existingError.remove();
-        }
-        // Conver the start date string to a Date object
-        start_date_fdn = sd_fdn;
+        calculate_end_date_button.disabled = true;
     }
 }
 
-function validateFDNCurrentDate(){
-    var c_d = document.getElementById('current_date').value; // Get the current date from the input field
-    
-    // Check if the start date is a valid date format, i.e. YYYY-MM-DD
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(c_d)) {
-        // Display error message above the input field
-        document.getElementById('current_date').parentNode.insertBefore(
-            error_text_cd_node,
-            document.getElementById('current_date')
-        );
+function validateDayNumberForm(){
+    const start_date_fdn_node = document.getElementById("start_date_fdn");
+    const current_date_node = document.getElementById("current_date");
+    const calculate_day_number_button = document.getElementById("calculate_day_number");
+
+    if (start_date_fdn_node.validity.valid && current_date_node.validity.valid) {
+        calculate_day_number_button.disabled = false;
     } else {
-        // Remove error message if it exists
-        var existingError = document.getElementById('current_date_error');
-        if (existingError) {
-            existingError.remove();
-        }
-        // Convert the current date string to a Date object
-        current_date = new Date(c_d);
+        calculate_day_number_button.disabled = true;
     }
 }
 
+function toggle_SD_FED_Error(){
+    const start_date_fed_node = document.getElementById("start_date_fed");
+    const start_date_fed_error_node = document.getElementById("start_date_fed_error");
+
+    if (!start_date_fed_node.validity.valid) {
+        start_date_fed_error_node.textContent = "Invalid date format. Please use YYYY-MM-DD.";
+    } else {
+        start_date_fed_error_node.textContent = "";
+    }
+}
+
+function toggle_SD_ND_Error(){
+    const number_of_days_node = document.getElementById("number_of_days");
+    const number_of_days_error_node = document.getElementById("number_of_days_error");
+
+    if (!number_of_days_node.validity.valid) {
+        number_of_days_error_node.textContent = "Invalid number of days. Please enter a valid number.";
+    } else {
+        number_of_days_error_node.textContent = "";
+    }
+}
 
 
 function findEndDate() {
-    var startDateObj = new Date(start_date_fed);
+    var startDateObj = new Date(document.getElementById("start_date_fed").value),
+        number_of_days = parseInt(document.getElementById("number_of_days").value);
 
     // Calculate the end date
     const endDateObj = new Date(startDateObj.getTime() + number_of_days * 24 * 60 * 60 * 1000);
 
     // Format the end date as YYYY-MM-DD
-    const endDate = endDateObj.toISOString().split('T')[0];
+    // const endDate = endDateObj.toISOString().split('T')[0];
 
-    // Set the innerHTML of the span with id "end_date" to the calculated end date
-    document.getElementById("end_date").innerHTML = end_date;
+    // Format the end date as MM-DD-YYYY for display
+    const endDateDisplay = endDateObj.toLocaleDateString();
+
+    // Set the textContent of the span with id "end_date" to the calculated end date
+    document.getElementById("end_date").textContent = endDateDisplay;
+    console.log(`End date: ${endDateDisplay}`);
 }
 
 
 function findWhatDayImOn() {
-
+    var current_date = new Date(document.getElementById("current_date").value),
+        start_date_fdn = new Date(document.getElementById("start_date_fdn").value);
+    
     // Calculate the difference in milliseconds
     var differenceInMilliseconds = current_date - start_date_fdn;
 
@@ -135,13 +97,10 @@ function findWhatDayImOn() {
     const differenceInDays = differenceInMilliseconds / millisecondsPerDay;
 
     day_number = Math.floor(differenceInDays) + 1; // Add 1 to include the start date
+
+    // Set the textContent of the span with id "day_number" to the calculated day number
+    document.getElementById("day_number").textContent = day_number;
 }
-
-// startDate = prompt('Enter start date (YYYY-MM-DD):', '');
-// days = parseInt(prompt('Enter number of days:', ''));
-
-// endDate = findEndDate(startDate, days);
-// console.log(`End date: ${endDate}`);
 
 
 
