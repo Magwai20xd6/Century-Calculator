@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    margin-bottom: 20px; /* Space between forms */
+    text-align: center; /* Center the content inside form container */
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Vertical space between form fields */
+    text-align: center; /* Center the content inside form container */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+table {
+			border: 1px solid black;
+            border-radius: 5px;
+            border-collapse: separate;
+			margin-left: auto;
+			margin-right: auto;
+}
+tr {
+            border: 1px solid black;
+            align-items: center;
+            border-spacing: 0, 5px;
+}
+
+td {
+            border: 1px solid black;
+            text-align: center;
+            align-items: center;
+}
+
+/* nested-grid {
+    width: 100%;
+    border-collapse: collapse;
+  }
+nested-grid td {
+    border: none;
+    padding: 10px;
+    width: 50%; /* Ensures both inner cells split the column evenly */
+  /* } */
+left-cell {
+    border-right: 1px solid black; /* Creates vertical division inside the cell */
+  } */
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+			box-sizing: border-box;
+			width: 250px;
+			padding: 10px 15px;
+			font-size: 15px;
+			font-weight: bold;
+			border: none;
+			border-radius: 5px;
+			border: 2px solid black;
+            align-items: center;
+            text-align: center;
+}
+
+button[type="submit"] {
+			width: 100%;
+			padding: 10px 20px;
+			background-color: green;
+			color: white;
+			border: none;
+			border-radius: 5px;
+            align-items: center;
+}

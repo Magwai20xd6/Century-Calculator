@@ -1,38 +1,81 @@
 <html>
     <head>
         <title>Century Drill Calculator</title>
+        <link rel="stylesheet" type="text/css" href="century_calculator.css">
     </head>
-    <body onload="popCurrentDate()">
-        <p>When will I finish?</p>
-        <form id="find_end_date" oninput="validateEndDateForm();">
-            <label for="start_date">Start Date:</label>
-            <span id="start_date_fed_error" style="color: red;"></span>
-            <input type="date" name="start_date_fed" id="start_date_fed" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_FED_Error()" value=""></input>
-            
-            <label for="number_of_days">Number of Days:</label>
-            <span id="number_of_days_error" style="color: red;"></span>
-            <input type="number" name="number_of_days" id="number_of_days" required pattern="\d+" oninput="toggle_SD_ND_Error()" value="100"></input>
-            
-            <button id="calculate_end_date" disabled type="submit">Calculate</button>
-        </form>
-        
-        <span id="end_date"></span>
+    <body onload="popCurrentDate()" class="body">
+        <div class="form-container">
+            <table>
+                <tr>
+                    <td>
+                        <p class="form-item">When will I finish?</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form id="find_end_date" oninput="validateEndDateForm();">
+                            <label for="start_date" class="form-item">Start Date:</label>
+                            <span id="start_date_fed_error" style="color: red;" class="form-item"></span>
+                            <input type="date" name="start_date_fed" id="start_date_fed" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_FED_Error()" value=""></input>
 
-        <p>What day am I on?</p>
-        <form id="find_day_number" oninput="validateDayNumberForm();">
-            <label for="start_date">Start Date:</label>
-            <span id="start_date_fdn_error" style="color: red;"></span>
-            <input type="date" name="start_date_fdn" id="start_date_fdn" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_FDN_Error()" value=""></input>
-            
-            <label for="current_date">Current Date:</label>
-            <span id="current_date_error" style="color: red;"></span>
-            <input type="date" name="current_date" id="current_date" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_CD_Error()" value=""></input>
-            
-            <button id="calculate_day_number" disabled type="submit">Calculate</button>
-        </form>
-        
-        <span id="day_number"></span>
-    
+                            <label for="number_of_days" class="form-item">Number of Days:</label>
+                            <span id="number_of_days_error" style="color: red;" class="form-item"></span>
+                            <input type="number" name="number_of_days" id="number_of_days" required pattern="\d+" oninput="toggle_SD_ND_Error()" value="100"></input>
+
+                            <button id="calculate_end_date" class="form-item" disabled type="submit">Calculate</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="width: 50%;">
+                                <span id="end_date_label" class="form-item">End Date:</span>
+                            </td>
+                            <td>
+                                <span id="end_date" class="form-item"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <td>
+                        <p class="form-item">What day am I on?</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form id="find_day_number" oninput="validateDayNumberForm();">
+                            <label for="start_date" class="form-item">Start Date:</label>
+                            <span id="start_date_fdn_error" style="color: red;" class="form-item"></span>
+                            <input type="date" name="start_date_fdn" id="start_date_fdn" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_FDN_Error()" value=""></input>
+
+                            <label for="current_date" class="form-item">Current Date:</label>
+                            <span id="current_date_error" class="form-item" style="color: red;"></span>
+                            <input type="date" name="current_date" id="current_date" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_CD_Error()" value=""></input>
+
+                            <button id="calculate_day_number" class="form-item" disabled type="submit">Calculate</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <table style="width: 100%;" style="border: none;">
+                        <tr>
+                            <td style="width: 50%;">
+                                <span id="day_number_label" class="form-item">Day:</span>
+                            </td>
+                            <td style="width: 50%;">
+                                <span id="day_number" class="form-item"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </tr>
+            </table>
+        </div>
     <script src="century_calculator.js"></script>
     </body>
 </html>
