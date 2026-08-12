@@ -14,7 +14,7 @@ body {
 .form-item {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Vertical space between form fields */
+    gap: 15px; /* Vertical space between form fields */
     text-align: center; /* Center the content inside form container */
     font-size: 24px;
     font-weight: bold;
@@ -40,18 +40,6 @@ td {
             align-items: center;
 }
 
-/* nested-grid {
-    width: 100%;
-    border-collapse: collapse;
-  }
-nested-grid td {
-    border: none;
-    padding: 10px;
-    width: 50%; /* Ensures both inner cells split the column evenly */
-  /* } */
-left-cell {
-    border-right: 1px solid black; /* Creates vertical division inside the cell */
-  } */
 
 input[type="text"],
 input[type="date"],
@@ -59,10 +47,11 @@ input[type="number"] {
 			box-sizing: border-box;
 			padding: 10px 15px;
 			font-size: 15px;
+            width: 75%;
 			font-weight: bold;
 			border: none;
 			border-radius: 5px;
-			border: 2px solid black;
+			border: 1px solid black;
             align-items: center;
             text-align: center;
 }

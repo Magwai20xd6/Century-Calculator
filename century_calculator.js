@@ -1,16 +1,3 @@
-// Add event listeners to the forms
-// document.getElementById('find_end_date').addEventListener('submit', function(event) {
-//     event.preventDefault(); // Prevent the form from submitting
-
-//     findEndDate();
-// });
-document.getElementById('find_day_number').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting
-
-    findWhatDayImOn();
-});
-
-
 function popCurrentDate(){
     const current_date_node = document.getElementById("current_date");
     const today = new Date();
@@ -75,6 +62,28 @@ function toggle_SD_ND_Error(){
     }
 }
 
+// function toggle_SD_FDN_Error(){
+//     const start_date_fdn_node = document.getElementById("start_date_fdn");
+//     const start_date_fdn_error_node = document.getElementById("start_date_fdn_error");
+
+//     if (!start_date_fdn_node.validity.valid) {
+//         start_date_fdn_error_node.textContent = "Invalid date format. Please use YYYY-MM-DD.";
+//     } else {
+//         start_date_fdn_error_node.textContent = "";
+//     }
+// }
+
+// function toggle_CD_FDN_Error(){
+//     const current_date_node = document.getElementById("current_date");
+//     const current_date_error_node = document.getElementById("current_date_error");
+
+//     if (!current_date_node.validity.valid) {
+//         current_date_error_node.textContent = "Invalid date format. Please use YYYY-MM-DD.";
+//     } else {
+//         current_date_error_node.textContent = "";
+//     }
+// }
+
 
 function findEndDate() {
     var startDateObj = new Date(document.getElementById("start_date_fed").value),
@@ -112,8 +121,3 @@ function findWhatDayImOn() {
     document.getElementById("day_number").textContent = day_number;
 }
 
-
-
-
-// This code as a bookmarklet.
-//javascript:(function()%7Bfunction%20findEndDate(startDate%2C%20days)%20%7B%2F%2F%20Parse%20the%20start%20dateconst%20startDateObj%20%3D%20new%20Date(startDate)%3B%2F%2F%20Calculate%20the%20end%20dateconst%20endDateObj%20%3D%20new%20Date(startDateObj.getTime()%20%2B%20days%20*%2024%20*%2060%20*%2060%20*%201000)%3B%2F%2F%20Format%20the%20end%20date%20as%20YYYY-MM-DDconst%20endDate%20%3D%20endDateObj.toISOString().split('T')%5B0%5D%3Breturn%20endDate%3B%7D%3B%2F%2F%20Prompt%20for%20startDate%20and%20daysstartDate%20%3D%20prompt('Enter%20start%20date%20(YYYY-MM-DD)%3A'%2C%20'')%3Bdays%20%3D%20parseInt(prompt('Enter%20number%20of%20days%3A'%2C%20''))%3B%2F%2F%20Calc%20end%20date%20and%20log%20itendDate%20%3D%20findEndDate(startDate%2C%20days)%3Bconsole.log(%60End%20date%3A%20%24%7BendDate%7D%60)%7D)()

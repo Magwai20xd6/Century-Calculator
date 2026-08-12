@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="number" name="number_of_days" id="number_of_days" required pattern="\d+" oninput="toggle_SD_ND_Error()" value="100"></input>
+                        <input type="number" name="number_of_days" id="number_of_days" required pattern="\d+" oninput="toggle_SD_ND_Error();validateEndDateForm();" value="100"></input>
                     </td>
                 </tr>
                 <tr>
@@ -69,17 +69,37 @@
                 </tr>
                 <tr>
                     <td>
-                        <form id="find_day_number" oninput="">
-                            <label for="start_date" class="form-item">Start Date:</label>
-                            <span id="start_date_fdn_error" style="color: red;" class="form-item"></span>
-                            <input type="date" name="start_date_fdn" id="start_date_fdn" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_FDN_Error();validateDayNumberForm();" value=""></input>
-
-                            <label for="current_date" class="form-item">Current Date:</label>
-                            <span id="current_date_error" class="form-item" style="color: red;"></span>
-                            <input type="date" name="current_date" id="current_date" required pattern="\d{4}-\d{2}-\d{2}" oninput="toggle_SD_CD_Error();validateDayNumberForm();" value=""></input>
-
-                            <button id="calculate_day_number" class="form-item" disabled type="submit">Calculate</button>
-                        </form>
+                        <label for="start_date" class="form-item">Start Date:</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="start_date_fdn_error" style="color: red;" class="form-item"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="date" name="start_date_fdn" id="start_date_fdn" required pattern="\d{4}-\d{2}-\d{2}" oninput="validateDayNumberForm();" value=""></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="current_date" class="form-item">Current Date:</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="current_date_error" class="form-item" style="color: red;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="current_date" type="date" name="current_date"  required pattern="\d{4}-\d{2}-\d{2}" oninput="validateDayNumberForm();" value=""></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="calculate_day_number" class="form-item" type="submit" onclick="findWhatDayImOn();">Calculate</button>
                     </td>
                 </tr>
                 <tr>
