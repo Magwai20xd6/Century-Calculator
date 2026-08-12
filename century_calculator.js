@@ -1,9 +1,9 @@
 // Add event listeners to the forms
-document.getElementById('find_end_date').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting
+// document.getElementById('find_end_date').addEventListener('submit', function(event) {
+//     event.preventDefault(); // Prevent the form from submitting
 
-    findEndDate();
-});
+//     findEndDate();
+// });
 document.getElementById('find_day_number').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the form from submitting
 
@@ -14,7 +14,17 @@ document.getElementById('find_day_number').addEventListener('submit', function(e
 function popCurrentDate(){
     const current_date_node = document.getElementById("current_date");
     const today = new Date();
-    const formattedDate = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
+    const formatter = new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+
+    // Destructure the format components to custom rearrange them
+    const [{ value: month }, , { value: day }, , { value: year }] = formatter.formatToParts(today);
+    const formattedDate = `${year}-${month}-${day}`;
+
+    console.log(formattedDate);
     current_date_node.value = formattedDate;
 }
 
