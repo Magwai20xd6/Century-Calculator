@@ -37,6 +37,7 @@ table {
 			margin-left: auto;
 			margin-right: auto;
 }
+
 tr {
             border: none;
             align-items: center;
@@ -47,6 +48,24 @@ td {
             border: none;
             text-align: center;
             align-items: center;
+}
+
+.outer-table {
+            border-bottom: none;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0, 5px;
+}
+
+.nested-table {
+            border-top: none;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0, 5px;
 }
 
 
