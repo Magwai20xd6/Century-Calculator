@@ -6,7 +6,26 @@ body {
     margin: 0;
 }
 
+.brick-pattern {
+  /* 1. Define your seamless image or SVG */
+  background-image: 
+    url('images/Ermine_Spot.svg'),
+    url('images/Ermine_Spot.svg');
+
+  /* 2. Crucial: Define the strict width and height of one tile */
+  background-size: 288px 384px; 
+
+  /* 3. Stagger the second layer: shift X by half-width (50px), Y by half-height (30px) */
+  background-position: 
+    0 0, 
+    144px 192px;
+
+  /* 4. Ensure both layers tile infinitely */
+  background-repeat: repeat;
+}
+
 .form-container {
+    background-color: white; /* White background for the form */
     margin-bottom: 20px; /* Space between forms */
     text-align: center; /* Center the content inside form container */
 }
