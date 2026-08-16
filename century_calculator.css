@@ -107,6 +107,18 @@ body::after {
   transform-origin: right top;
 }
 
+.title {
+    font-size: 30px;
+    color: #000000;
+    background-color: white;
+    text-align: center;
+    font-weight: bold;
+    border: 10px solid #d62828;
+    border-radius: 10px;
+    padding: 15px;             /* Space between the text and the rectangle border */
+    margin-bottom: 20px;
+}
+
 .arms {
     display: flex;
     flex-direction: column;
