@@ -2,8 +2,108 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 40px; /* Gives spacing so content doesn't overlap the border */
+    box-sizing: border-box;
+
+    /* 1. Define your seamless image or SVG */
+    background-image: 
+        url('images/Ermine_Spot.svg'),
+        url('images/Ermine_Spot.svg');
+
+    /* 2. Crucial: Define the strict width and height of one tile */
+    background-size: 288px 384px; 
+
+    /* 3. Stagger the second layer: shift X by half-width (50px), Y by half-height (30px) */
+    background-position: 
+        0 0, 
+        144px 192px;
+
+    /* 4. Ensure both layers tile infinitely */
+    background-repeat: repeat;
+}
+
+
+/* The solid base frame that stays fixed to the viewport */
+html::before {
+  content: "";
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  border: 20px solid transparent;
+  box-shadow: 0 0 0 20px #d62828;
+  pointer-events: none; /* Allows clicking on form elements underneath */
+  z-index: 9998;
+}
+
+/* 3. TOP EDGE DOVETAILS (Points Downward) */
+html::after {
+  content: ""; 
+  position: fixed; 
+  pointer-events: none; 
+  z-index: 9999;
+  top: 20px; 
+  left: 20px; 
+  right: 20px; 
+  height: 20px;
+  background-image: url("images/dovetail.svg");
+  background-repeat: repeat-x;
+}
+
+/* 4. BOTTOM EDGE DOVETAILS (Rotated to Point Upward) */
+body::before {
+  content: ""; 
+  position: fixed; 
+  pointer-events: none; 
+  z-index: 9999;
+  bottom: 20px; 
+  left: 20px; 
+  right: 20px; 
+  height: 20px;
+  background-image: url("images/dovetail.svg");
+  background-repeat: repeat-x;
+  transform: rotate(180deg);
+}
+
+/* 5. LEFT EDGE DOVETAILS (Rotated to Point Right) */
+body::after {
+  content: ""; 
+  position: fixed; 
+  pointer-events: none; 
+  z-index: 9999;
+  left: 20px; 
+  top: 20px; 
+  /* Define as a horizontal strip first */
+  width: calc(100vh - 40px); 
+  height: 20px;
+  background-image: url("images/dovetail.svg");
+  background-repeat: repeat-x; /* Repeats along the width of the element */
+  
+  /* Rotate down and flip so notches point right (inward) */
+  transform: rotate(90deg) scaleY(-1);
+  transform-origin: left top;
+}
+
+/* 6. RIGHT EDGE DOVETAILS (Rotated to Point Left) */
+.right-dovetails {
+  content: ""; 
+  position: fixed; 
+  pointer-events: none; 
+  z-index: 9999;
+  right: 20px; 
+  top: 20px; 
+  /* Define as a horizontal strip anchored to the right */
+  width: calc(100vh - 40px); 
+  height: 20px;
+  background-image: url("images/dovetail.svg");
+  background-repeat: repeat-x;
+  
+  /* Rotate down along the right edge and flip so notches point left (inward) */
+  transform: rotate(-90deg) scaleY(-1);
+  transform-origin: right top;
 }
 
 .brick-pattern {
