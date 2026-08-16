@@ -1,5 +1,6 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -13,12 +14,12 @@ body {
         url('images/Ermine_Spot.svg');
 
     /* 2. Crucial: Define the strict width and height of one tile */
-    background-size: 288px 384px; 
+    background-size: 144px 192px; 
 
     /* 3. Stagger the second layer: shift X by half-width (50px), Y by half-height (30px) */
     background-position: 
         0 0, 
-        144px 192px;
+        72px 96px;
 
     /* 4. Ensure both layers tile infinitely */
     background-repeat: repeat;
@@ -104,6 +105,13 @@ body::after {
   /* Rotate down along the right edge and flip so notches point left (inward) */
   transform: rotate(-90deg) scaleY(-1);
   transform-origin: right top;
+}
+
+.arms {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
 }
 
 .form-container {
