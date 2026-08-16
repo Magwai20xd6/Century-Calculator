@@ -115,7 +115,6 @@ body::after {
 }
 
 .form-container {
-    background-color: white; /* White background for the form */
     margin-bottom: 20px; /* Space between forms */
     text-align: center; /* Center the content inside form container */
 }
@@ -160,6 +159,7 @@ td {
 }
 
 .outer-table {
+            background-color: white; /* White background for the form */
             border-bottom: none;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
@@ -169,6 +169,7 @@ td {
 }
 
 .nested-table {
+            background-color: white; /* White background for the form */
             border-top: none;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
